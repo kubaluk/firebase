@@ -1,15 +1,16 @@
-import { ThemeProvider } from 'styled-components';
-import GlobalStyles from '../../Styles/GlobalStyles';
-import { LightTheme, DarkTheme } from '../../Styles/Themes';
-import Signup from '../Signup/Signup';
+import Signup from '../Signup/Signup'
+import Dashboard from '../Dashboard/Dashboard'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={LightTheme}>
-        <GlobalStyles />
-        <Signup />
-      </ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/signup' element={<Signup />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
