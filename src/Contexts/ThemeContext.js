@@ -1,12 +1,16 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext()
 
 function CustomThemeProvider({children}) {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light')
+
+  useEffect(()=>{
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   function switchTheme(){
-    setTheme(theme==='light' ? 'dark' : 'light')
+    setTheme(prevTheme => prevTheme==='light' ? 'dark' : 'light')
   }
 
   const value = {theme, switchTheme}
