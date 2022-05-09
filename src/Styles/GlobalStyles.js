@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: Inter, sans-serif;
     color: ${props => props.theme.font};
     background-color: ${props => props.theme.background};
+    font-size: 16px;
   }
 `
 

@@ -1,14 +1,13 @@
 import React from 'react'
 import { StyledSignup } from '../../Styles/StyledSignup'
-import ThemeButton from '../ThemeButton/ThemeButton'
+import SignupForm from './SingupForm'
 
 function Signup(){
   return (
     <>
       <StyledSignup>
-        hello
+        <SignupForm />
       </StyledSignup>
-      <ThemeButton />
     </>
   )
 }

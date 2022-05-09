@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 function Dashboard(){
   return (
     <>
-      sup
+      <Link to='/signup'>Sign up</Link>
     </>
   )
 }
