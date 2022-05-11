@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Label, Input, StyledSubmit } from '../../Styles/StyledForm'
+import { StyledForm, Label, Input, Submit } from '../../Styles/StyledFormComponents'
 import { useAuth } from '../../Contexts/AuthContext';
 
 function SignupForm() {
@@ -8,7 +8,7 @@ function SignupForm() {
   const { signup } = useAuth()
 
   return (
-    <div>
+    <StyledForm>
       <Formik
         initialValues={{ email: '', password: '', confirm: '' }}
         validate={values => {
@@ -70,13 +70,13 @@ function SignupForm() {
               value={values.confirm}
             />
             {errors.confirm && touched.confirm && errors.confirm}
-            <StyledSubmit type="submit" disabled={isSubmitting}>
+            <Submit type="submit" disabled={isSubmitting}>
               Submit
-            </StyledSubmit>
+            </Submit>
           </form>
         )}
       </Formik>
-    </div>
+    </StyledForm>
   )
 }
 

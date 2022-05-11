@@ -13,7 +13,7 @@ const Label = styled.label`
   text-align: center;
 `
 
-const StyledSubmit = styled.button`
+const Submit = styled.button`
   display: block;
   padding: 1rem;
   width: max(50%, 6rem);
@@ -38,4 +38,4 @@ const Input = styled.input`
   box-sizing: border-box;
 `
 
-export { Label, Input, StyledForm, StyledSubmit }
+export { Label, Input, StyledForm, Submit }

@@ -2,7 +2,7 @@ import React from 'react'
 import { useTheme } from '../../Contexts/ThemeContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons'
-import StyledThemeButton from '../../Styles/StyledThemeButton'
+import StyledThemeButton from './StyledThemeButton'
 
 function ThemeButton(){
   const {theme, switchTheme} = useTheme()
