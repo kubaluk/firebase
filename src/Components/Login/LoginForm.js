@@ -5,15 +5,26 @@ import { useAuth } from '../../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
-function SignupForm() {
+function LoginForm() {
 
-  const { signup } = useAuth()
+  const { login } = useAuth()
   const navigate = useNavigate()
+
+  async function authenticateUser(email, password, setSubmitting){
+    try {
+      await login(email, password)
+      setSubmitting(false);
+      toast.success('Successfully logged in!')
+      navigate('/')
+    } catch (error) {
+      toast.error('Login was unsuccessful')
+    }
+  }
 
   return (
     <StyledForm>
       <Formik
-        initialValues={{ email: '', password: '', confirm: '' }}
+        initialValues={{ email: '', password: '' }}
         validate={values => {
           const errors = {};
           if (!values.email) {
@@ -23,18 +34,13 @@ function SignupForm() {
           ) {
             errors.email = 'Invalid email address';
           }
-          if(values.password !== values.confirm){
-            errors.confirm = 'Passwords must be the same'
-          }
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
           await setTimeout(() => {
             setSubmitting(true)
-            signup(values.email, values.password)
+            authenticateUser(values.email, values.password, setSubmitting)
             setSubmitting(false);
-            toast.success('Successfully created an account!')
-            navigate('/')
           }, 400);
         }}
       >
@@ -67,17 +73,8 @@ function SignupForm() {
               value={values.password}
             />
             {errors.password && touched.password && errors.password}
-            <Label>Confirm password</Label>
-            <Input
-              type="password"
-              name="confirm"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.confirm}
-            />
-            {errors.confirm && touched.confirm && errors.confirm}
             <Submit type="submit" disabled={isSubmitting || !isValid}>
-              Sign up
+              Log in
             </Submit>
           </form>
         )}
@@ -86,4 +83,4 @@ function SignupForm() {
   )
 }
 
-export default SignupForm;
+export default LoginForm;

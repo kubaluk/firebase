@@ -3,6 +3,7 @@ import Centered from '../../Styles/Centered'
 import Card from '../../Styles/Card'
 import { Link } from 'react-router-dom'
 
+
 const Title = styled.h1`
   font-size: clamp(2rem, 3vw, 4rem);
   text-align: center;
@@ -16,14 +17,15 @@ const Redirect = styled.p`
   padding-bottom: 0.75rem;
 `
 
-const StyledSignup = ({children}) => (
+
+const StyledLogin = ({children}) => (
   <Centered>
     <Card>
-      <Title>Sign up</Title>
+      <Title>Log in</Title>
       {children}
-      <Redirect>Already have an account? <Link to='/login'>Sign in</Link></Redirect>
+      <Redirect>Don't have an account? <Link to='/signup'>Sign up</Link></Redirect>
     </Card>
   </Centered>
 )
 
-export { StyledSignup }
+export { StyledLogin }

@@ -17,7 +17,8 @@ const Submit = styled.button`
   display: block;
   padding: 1rem;
   width: max(50%, 6rem);
-  margin: 1rem auto;
+  margin: 1rem auto 0;
+  cursor: pointer;
 
   font-family: Inter, sans-serif;
   font-weight: 700;
