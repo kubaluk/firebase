@@ -6,6 +6,7 @@ import Login from '../Login/Login'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import NotFound from '../NotFound/NotFound'
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
     <Theme>
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
+          <Route exact path='/' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} /> 
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

@@ -2,20 +2,22 @@ import React from 'react';
 import { Formik } from 'formik';
 import { StyledForm, Label, Input, Submit } from '../../Styles/StyledFormComponents'
 import { useAuth } from '../../Contexts/AuthContext';
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 function LoginForm() {
 
   const { login } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
   async function authenticateUser(email, password, setSubmitting){
     try {
       await login(email, password)
       setSubmitting(false);
       toast.success('Successfully logged in!')
-      navigate('/')
+      navigate(from, { replace: true })
     } catch (error) {
       toast.error('Login was unsuccessful')
     }
