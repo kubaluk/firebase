@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginForm from './LoginForm'
-import ThemeButton from '../ThemeButton/ThemeButton'
+import ThemeButton from '../../ThemeButton/ThemeButton'
 import { StyledLogin } from './StyledLogin'
 
 

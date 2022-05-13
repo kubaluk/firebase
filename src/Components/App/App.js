@@ -1,12 +1,12 @@
-import Signup from '../Signup/Signup'
 import Dashboard from '../Dashboard/Dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Theme from '../../Styles/Theme'
-import Login from '../Login/Login'
+import Login from '../Authentication/Login/Login'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import PrivateRoute from '../Authentication/PrivateRoute/PrivateRoute'
 import NotFound from '../NotFound/NotFound'
+import Signup from '../Authentication/Signup/Signup'
 
 function App() {
   return (

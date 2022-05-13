@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { StyledForm, Label, Input, Submit } from '../../Styles/StyledFormComponents'
-import { useAuth } from '../../Contexts/AuthContext';
+import { StyledForm, Label, Input, Submit } from '../../../Styles/StyledFormComponents'
+import { useAuth } from '../../../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 

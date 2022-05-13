@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { useAuth } from '../../Contexts/AuthContext'
+import { useAuth } from '../../../Contexts/AuthContext'
 
 function PrivateRoute({ children }){
   const { currentUser } = useAuth()
