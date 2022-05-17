@@ -10,14 +10,25 @@ import { useAuth } from '../../../Contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-function SignupForm() {
-	const { signup } = useAuth()
+function ResetForm() {
+	const { resetPassword } = useAuth()
 	const navigate = useNavigate()
+
+	async function submitPasswordReset(email, setSubmitting) {
+		try {
+			await resetPassword(email)
+			setSubmitting(false)
+			toast.success('Check your inbox for more instructions')
+			navigate('/login')
+		} catch (error) {
+			toast.error('There was an error during resetting')
+		}
+	}
 
 	return (
 		<StyledForm>
 			<Formik
-				initialValues={{ email: '', password: '', confirm: '' }}
+				initialValues={{ email: '' }}
 				validate={(values) => {
 					const errors = {}
 					if (!values.email) {
@@ -27,18 +38,13 @@ function SignupForm() {
 					) {
 						errors.email = 'Invalid email address'
 					}
-					if (values.password !== values.confirm) {
-						errors.confirm = 'Passwords must be the same'
-					}
 					return errors
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
 					await setTimeout(() => {
 						setSubmitting(true)
-						signup(values.email, values.password)
+						submitPasswordReset(values.email, setSubmitting)
 						setSubmitting(false)
-						toast.success('Successfully created an account!')
-						navigate('/login')
 					}, 400)
 				}}>
 				{({
@@ -61,26 +67,8 @@ function SignupForm() {
 							value={values.email}
 						/>
 						{errors.email && touched.email && errors.email}
-						<Label>Password</Label>
-						<Input
-							type='password'
-							name='password'
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.password}
-						/>
-						{errors.password && touched.password && errors.password}
-						<Label>Confirm password</Label>
-						<Input
-							type='password'
-							name='confirm'
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.confirm}
-						/>
-						{errors.confirm && touched.confirm && errors.confirm}
 						<Submit type='submit' disabled={isSubmitting || !isValid}>
-							Sign up
+							Reset
 						</Submit>
 					</form>
 				)}
@@ -89,4 +77,4 @@ function SignupForm() {
 	)
 }
 
-export default SignupForm
+export default ResetForm
