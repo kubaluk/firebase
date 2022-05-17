@@ -9,21 +9,29 @@ import NotFound from '../NotFound/NotFound'
 import Signup from '../Authentication/Signup/Signup'
 
 function App() {
-  return (
-    <>
-    <Theme>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path='/' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} /> 
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-        <ToastContainer />
-      </BrowserRouter>
-    </Theme>
-    </>
-  )
+	return (
+		<>
+			<Theme>
+				<BrowserRouter>
+					<Routes>
+						<Route
+							exact
+							path='/'
+							element={
+								<PrivateRoute>
+									<Dashboard />
+								</PrivateRoute>
+							}
+						/>
+						<Route path='/signup' element={<Signup />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='*' element={<NotFound />} />
+					</Routes>
+					<ToastContainer />
+				</BrowserRouter>
+			</Theme>
+		</>
+	)
 }
 
-export default App;
+export default App
